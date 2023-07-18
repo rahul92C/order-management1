@@ -26,5 +26,6 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    docker build -t rahulpawar116/order-management
+    docker build -f Dockerfile .
+    docker build -t rahulpawar116/order-management .
   displayName: 'Build order mangement container'
