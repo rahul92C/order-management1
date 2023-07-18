@@ -16,6 +16,15 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    echo "Running the sonar scanner"
+    echo "Completed the sonar scan"
+  displayName: 'Review the code'
+
+- script: |
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- script: |
+    docker build -t rahulpawar116/order-management:1.0.0
+  displayName: 'Build order mangement container'
