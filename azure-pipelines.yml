@@ -28,4 +28,5 @@ steps:
 - script: |
     docker build -f Dockerfile .
     docker build -t rahulpawar116/order-management .
+    docker push rahulpawar116/order-management:v1.0
   displayName: 'Build order mangement container'
