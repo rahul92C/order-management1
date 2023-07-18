@@ -27,6 +27,7 @@ steps:
 
 - script: |
     docker build -f Dockerfile .
+    docker build -t order-management . 
     docker build -t rahulpawar116/order-management:1.0.1
   displayName: 'Build order mangement container'
 
