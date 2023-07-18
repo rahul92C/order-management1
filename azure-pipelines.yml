@@ -26,5 +26,6 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    docker build -t rahulpawar116/order-management:1.0.0
+    docker build -t order-management .
+    docker tag Dockerfile rahulpawar116/order-management:Dockerfile 
   displayName: 'Build order mangement container'
