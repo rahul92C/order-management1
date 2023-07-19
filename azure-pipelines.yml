@@ -26,11 +26,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: |
-    docker build -f Dockerfile .
-    docker build -t rahulpawar116/order-management .
-  displayName: 'Build order mangement container'
-
 - task: Docker@2
   inputs:
     containerRegistry: 'Dock hub'
