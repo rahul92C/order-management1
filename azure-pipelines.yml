@@ -26,10 +26,3 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'Dock hub'
-    repository: 'rahulpawar116 / order-management'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-
