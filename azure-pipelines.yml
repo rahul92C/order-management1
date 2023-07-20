@@ -32,20 +32,9 @@ steps:
     containerRegistry: 'Docker_hub_OM1'
     repository: 'rahulpawar116 / order-management'
     command: 'buildAndPush'
+    tags: '$(Build.BuildId)'
     Dockerfile: '**/Dockerfile'
 
-- task: CmdLine@2
-  displayName: "Download and install Trivy"
-  inputs:
-    script: |
-      sudo apt-get install rpm
-      wget https://github.com/aquasecurity/trivy-azure-pipelines-task.git
-      sudo apt-get update
-      sudo apt-get install trivy
-      trivy -v 
-
-- task: CmdLine@2
-  displayName: 'Image Scanning'
-  inputs:
-    script: |
-      trivy image  rahulpawar116/order-management
+- script: |
+    trivy image rahulpawar116 / order-management:$(Build.BuildId)
+  displayName:  "Image Scanning"
