@@ -35,6 +35,7 @@ steps:
     tags: '$(Build.BuildId)'
     Dockerfile: '**/Dockerfile'
 
+
 - task: CmdLine@2
   displayName: "Run trivy scan"
   inputs:
