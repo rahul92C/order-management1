@@ -40,12 +40,14 @@ steps:
   inputs:
     script: |
       sudo apt-get install rpm
-      wget https://github.com/aquasecurity/trivy/releases/tag/v0.43.1/trivy_0.43.1_Linux-64bit.deb
-      sudo dpkg -i trivy_0.43.1_Linux-64bit.deb
+      wget https://github.com/aquasecurity/trivy/releases/tag/v0.42.0/trivy_0.42.0_Linux-64bit.deb
+      sudo dpkg -i trivy_0.42.0_Linux-64bit.deb
       trivy -v  
 
 - task: CmdLine@2
   displayName: "Run trivy scan"
   inputs:
     script: |
-      trivy image rahulpawar116 / order-management:$(Build.BuildId)
+        trivy image --exit-code 0 --severity LOW,MEDIUM rahulpawar116 / order-management:$(Build.BuildId)
+        trivy image --exit-code 1 --severity HIGH,CRITICAL rahulpawar116 / order-management:$(Build.BuildId)
+
