@@ -34,6 +34,17 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
 
-- script: |
-    trivy image rahulpawar116 / order-management:$(Build.BuildId)
+- task: CmdLine@2
+  displayName: "Download and install Trivy"
+  inputs:
+    script: |
+      sudo apt-get install rpm
+      wget https://github.com/aquasecurity/trivy/releases/download/v$(trivyVersion)/trivy_$(trivyVersion)_Linux-64bit.deb
+      sudo dpkg -i trivy_$(trivyVersion)_Linux-64bit.deb
+      trivy -v 
+
+- task: CmdLine@2
   displayName: 'Image Scanning'
+  inputs:
+    script: |
+      trivy image  myrepo/mydockerimage:mytag
