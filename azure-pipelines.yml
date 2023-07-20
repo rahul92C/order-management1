@@ -33,3 +33,7 @@ steps:
     repository: 'rahulpawar116 / order-management'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+
+- script: |
+    trivy image rahulpawar116 / order-management:$(Build.BuildId)
+  displayName: 'Image Scanning'
