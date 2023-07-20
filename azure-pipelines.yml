@@ -1,5 +1,6 @@
 # Node.js
 
+
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -26,3 +27,9 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker_hub_OM1'
+    repository: 'rahulpawar116 / order-management'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
