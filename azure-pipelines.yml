@@ -36,15 +36,6 @@ steps:
     Dockerfile: '**/Dockerfile'
 
 - task: CmdLine@2
-  displayName: "Download and install Trivy"
-  inputs:
-    script: |
-      sudo apt-get install rpm
-      wget https://github.com/aquasecurity/trivy/releases/tag/v0.42.0/trivy_0.42.0_Linux-64bit.deb
-      sudo dpkg -i trivy_0.42.0_Linux-64bit.deb
-      trivy -v  
-
-- task: CmdLine@2
   displayName: "Run trivy scan"
   inputs:
     script: |
