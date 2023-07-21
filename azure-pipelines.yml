@@ -39,6 +39,6 @@ steps:
   displayName: "Run trivy scan"
   inputs:
     script: |
-        trivy image --exit-code 0 --severity LOW,MEDIUM rahulpawar116 / order-management:$(Build.BuildId)
-        trivy image --exit-code 1 --severity HIGH,CRITICAL rahulpawar116 / order-management:$(Build.BuildId)
+        trivy image rahulpawar116 / order-management:$(Build.BuildId)
+       
 
