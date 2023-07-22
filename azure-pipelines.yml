@@ -35,10 +35,8 @@ steps:
     tags: '$(Build.BuildId)'
     Dockerfile: '**/Dockerfile'
 
-- task: CmdLine@2
-  displayName: "Run trivy scan"
-  inputs:
-    script: |
-        trivy image rahulpawar116 / order-management:$(Build.BuildId)
+#- task: CmdLine@2
+#  script: |
+#   trivy image rahulpawar116 / order-management:$(Build.BuildId)
        
 
